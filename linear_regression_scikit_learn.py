@@ -9,7 +9,7 @@ df=df.drop('Unnamed: 0',axis=1)
 print(80*'*')
 print(df.head())
 
-sns.pairplot(data=df)
+#sns.pairplot(data=df)
 #plt.show()
 print(80*'*')
 
@@ -32,5 +32,28 @@ print(80*'*')
 from sklearn.linear_model import LinearRegression
 model=LinearRegression()
 model.fit(X_train,y_train)
-print(model.predict(X_test))
+test_predictions=model.predict(X_test)
 
+from sklearn.metrics import mean_absolute_error,mean_squared_error
+print(df['Sales'].mean())
+mean_abs_error=mean_absolute_error(y_test,test_predictions)  #10% error
+print(mean_abs_error)
+mean_sq_error=mean_squared_error(y_test,test_predictions)
+print(mean_sq_error)
+
+mean_rmsq_error=np.sqrt(mean_squared_error(y_test,test_predictions))
+print(mean_rmsq_error)
+
+test_residuals=y_test-test_predictions
+#print(test_residuals)
+sns.scatterplot(x=y_test,y=test_residuals)
+plt.axhline(y=0,color='r',ls='--')
+plt.show()
+
+sns.displot(test_residuals,bins=25,kde=True)
+plt.show()
+
+import scipy as sp
+fig,ax=plt.subplots(figsize=(6,8),dpi=100)
+_=sp.stats.probplot(test_residuals,plot=ax)
+plt.show()
