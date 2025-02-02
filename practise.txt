@@ -1,0 +1,6 @@
+You can see that a while statement looks similar to an if statement. Thedifference is in how they behave. At the end of an if clause, the programexecution continues after the if statement. But at the end of a while clause,the program execution jumps back to the start of the while statement. Thewhile clause is often called the while loop or just the loop.Let’s look at an if statement and a while loop that use the same condi-tion and take the same actions based on that condition. Here is the codewith an if statement:Hi i am ashwini here
+How are you? 
+Hi i am ashwini here
+How are you? 
+Hi i am ashwini here
+How are you? 
